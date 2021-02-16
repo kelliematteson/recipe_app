@@ -44,9 +44,9 @@ export default function App(props) {
 				/>
 				<input type="submit" value="Find a Recipe" />
 			</form>
-			<div className={'Page'}>
-				<RecipeMap />
-			</div>
+			<a href={query.searchURL}>{query.searchURL}</a>
+			{Object.keys(recipe).length ? recipe.meals[0].strMeal : ''}
+			<div className={'Page'}></div>
 		</div>
 	);
 }
