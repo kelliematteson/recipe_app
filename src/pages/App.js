@@ -30,6 +30,22 @@ export default function App(props) {
 			searchURL: query.baseURL + query.option + query.food
 		});
 	};
+	// const handleClick = async addRecipe => {
+	// 	const body = JSON.stringify({
+	// 		name: addRecipe['meals'].strMeal
+	// 	});
+	// 	try {
+	// 		const response = await fetch('/api/recipes', {
+	// 			method: 'POST',
+	// 			headers: {
+	// 				'Content-Type': 'application/json'
+	// 			},
+	// 			body: body
+	// 		});
+	// 	} catch (error) {
+	// 		console.error(error);
+	// 	}
+	// };
 	return (
 		<div className="Page-wrapper">
 			<h2>Get a Recipe</h2>
@@ -44,8 +60,11 @@ export default function App(props) {
 				/>
 				<input type="submit" value="Find a Recipe" />
 			</form>
-			<a href={query.searchURL}>{query.searchURL}</a>
-			{Object.keys(recipe).length ? <RecipeMap recipe={recipe} /> : ''}
+			{Object.keys(recipe).length ? (
+				<RecipeMap recipe={recipe} key={recipe._id} />
+			) : (
+				''
+			)}
 			<div className={'Page'}></div>
 		</div>
 	);
