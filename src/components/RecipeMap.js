@@ -16,15 +16,32 @@ export default function RecipeMap(props) {
 			console.error(error);
 		}
 	};
+	const handleDelete = async e => {
+		try {
+			const response = await fetch(`/api/myrecipes/${props.match.params.id}`, {
+				method: 'DELETE',
+				headers: {
+					'Content-Type': 'application/json'
+				}
+			});
+			const data = await response.json();
+			setDidDelete(!didDelete);
+		} catch (error) {
+			console.error(error);
+		} finally {
+			window.location.assign('/');
+		}
+	};
 	return (
 		<div>
 			<h2>recipe Info goes here</h2>
 			{props.recipe.meals.map((meals, index) => {
 				return (
-					<div key={meals.index}>
-						<h3>{meals.strMeal}</h3>
+					<li key={meals.index}>
+						<p>{meals.strMeal}</p>
 						<button onClick={() => handleClick({ meals })}>Click me</button>
-					</div>
+						<button onClick={handleDelete}>Delete</button>
+					</li>
 				);
 			})}
 		</div>
