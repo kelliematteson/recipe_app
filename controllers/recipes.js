@@ -22,7 +22,7 @@ recipeController.post('/', async (req, res)=> {
     }
 })
 
-// Read
+// Read (Index)
 recipeController.get('/', async (req, res) => {
     try{
         const foundRecipes = await Recipe.find({})
@@ -35,11 +35,10 @@ recipeController.get('/', async (req, res) => {
             .json(error)   
     }
 })
-// Show Page
+// Show Page (Show)
 recipeController.get('/:id', async (req, res) => {
 	try {
 		const foundRecipe = await Recipe.findById(req.params.id);
-		// await foundRecipe.execPopulate('comments');
 		res.status(200).json(foundRecipe);
 	} catch (error) {
 		res.status(400).json(error);

@@ -1,4 +1,6 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+
 export default function RecipeMap(props) {
 	const handleClick = async addRecipe => {
 		const body = JSON.stringify({
@@ -35,13 +37,16 @@ export default function RecipeMap(props) {
 	return (
 		<div>
 			<h2>recipe Info goes here</h2>
-			{props.recipe.meals.map((meals, index) => {
+			{props.recipe.meals.map(meals => {
 				return (
-					<li key={meals.index}>
-						<p>{meals.strMeal}</p>
-						<button onClick={() => handleClick({ meals })}>Click me</button>
-						<button onClick={handleDelete}>Delete</button>
-					</li>
+					<Link to={`/${meals._id}`}>
+						<div key={meals.index}>
+							<p>{meals.strMeal}</p>
+							<img src={meals.strMealThumb} />
+							<button onClick={() => handleClick({ meals })}>Click me</button>
+							<button onClick={handleDelete}>Delete</button>
+						</div>
+					</Link>
 				);
 			})}
 		</div>
