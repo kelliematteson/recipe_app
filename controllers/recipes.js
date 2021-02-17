@@ -23,7 +23,6 @@ recipeController.post('/', async (req, res)=> {
 })
 
 // Read
-
 recipeController.get('/', async (req, res) => {
     try{
         const foundRecipes = await Recipe.find({})
@@ -46,13 +45,21 @@ recipeController.get('/:id', async (req, res) => {
 		res.status(400).json(error);
 	}
 });
-// Update
-
-
 // Destroy
 recipeController.delete('/:id', async (req, res) => {
 	try {
 		const foundRecipe = await Recipe.findByIdAndDelete(req.params.id);
+		res.status(200).json(foundRecipe);
+	} catch (error) {
+		res.status(400).json(error);
+	}
+});
+// Update
+recipeController.put('/:id', async (req, res) => {
+	try {
+		const foundRecipe = await Recipe.findByIdAndUpdate(req.params.id, req.body, {
+			new: true
+		});
 		res.status(200).json(foundRecipe);
 	} catch (error) {
 		res.status(400).json(error);
