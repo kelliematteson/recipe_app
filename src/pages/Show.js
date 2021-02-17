@@ -1,13 +1,20 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 export default function Show(props) {
-	return (
-		<div className="ShowPage">
-			This is the {props.page} page
-			<h2>This is where I want the recipe data to render</h2>
-			<p>Image</p>
-			<p>Ingredients</p>
-			<p>Instructions</p>
-		</div>
-	);
+	const [recipe, setRecipe] = useState([]);
+
+	useEffect(() => {
+		async () => {
+			try {
+				const response = await fetch(`/api/myrecipes/${props.match.params.id}`);
+				const data = await response.json();
+				console.log(data);
+				setRecipe([data]);
+			} catch (error) {
+				console.error(error);
+			}
+		};
+	});
+
+	return <div className="ShowPage">show page here: {recipe}</div>;
 }

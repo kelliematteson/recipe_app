@@ -2,30 +2,42 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
 export default function List(props) {
-	const [myRecipes, setMyRecipes] = useState([]);
+	const [tryRecipe, updateTryRecipe] = useState([]);
 	useEffect(() => {
 		// Immediately Invoked Function Expression
 		(async () => {
 			try {
-				const response = await fetch('/api/myrecipes');
+				const response = await fetch(`/api/myrecipes`);
 				const data = await response.json();
-				setMyRecipes(data);
+				updateTryRecipe(data);
 			} catch (error) {
 				console.error(error);
 			}
 		})();
 	}, []);
-	console.log(myRecipes);
+	// const handleDelete = async e => {
+	// 	try {
+	// 		const response = await fetch(`/api/myrecipes/${props.match.params.id}`, {
+	// 			method: 'DELETE',
+	// 			headers: {
+	// 				'Content-Type': 'application/json'
+	// 			}
+	// 		});
+	// 		const data = await response.json();
+	// 		setDidDelete(!didDelete);
+	// 	} catch (error) {
+	// 		console.error(error);
+	// 	} finally {
+	// 		window.location.assign('/list');
+	// 	}
+	// };
+	// console.log(myRecipes);
 	return (
 		<div className="myRecipes">
-			{myRecipes.map(recipe => {
+			{tryRecipe.map(item => {
 				return (
 					<>
-						<p key={recipe._id}>Recipe:{recipe.strMeal}</p>
-
-						<Link to={`/${recipe._id}`}>
-							<button>Show Page</button>
-						</Link>
+						<p key={item._id}>Recipe:{item.name}</p>
 					</>
 				);
 			})}
