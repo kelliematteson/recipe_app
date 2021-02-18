@@ -10,14 +10,16 @@ export default function Show(props) {
 	useEffect(() => {
 		(async () => {
 			try {
-				const response = await fetch(`api/show/${props.match.params.id}`);
+				const response = await fetch(
+					`/api/myrecipes/show/${props.match.params.id}`
+				);
 				const data = await response.json();
 				setRecipe(data);
 			} catch (error) {
 				console.error(error);
 			}
 		})();
-	}, []);
+	}, [recipe]);
 	const handleDelete = async e => {
 		try {
 			const response = await fetch(`/api/myrecipes/${props.match.params.id}`, {

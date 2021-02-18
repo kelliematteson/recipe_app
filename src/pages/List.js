@@ -22,7 +22,7 @@ export default function List(props) {
 				return (
 					<>
 						<p key={item._id}>Recipe:{item.name}</p>
-						<Link to={`/show/${item._id}`}>
+						<Link to={`/show/${item._id}`} {...props}>
 							<button>See the show page</button>
 						</Link>
 					</>
