@@ -36,23 +36,23 @@ recipeController.get('/', async (req, res) => {
     }
 })
 // Show Page (Show)
-recipeController.get('/:id', async (req, res) => {
+recipeController.get('/show/:id', async (req, res) => {
 	try {
 		const foundRecipe = await Recipe.findById(req.params.id);
-		res.status(200).json(foundRecipe);
+		res.status(200).json(foundRecipe)
 	} catch (error) {
-		res.status(400).json(error);
+		res.status(400).json(error)
 	}
-});
+})
 // Destroy
 recipeController.delete('/:id', async (req, res) => {
 	try {
 		const foundRecipe = await Recipe.findByIdAndDelete(req.params.id);
-		res.status(200).json(foundRecipe);
+		res.status(200).json(foundRecipe)
 	} catch (error) {
-		res.status(400).json(error);
+		res.status(400).json(error)
 	}
-});
+})
 // Update
 recipeController.put('/:id', async (req, res) => {
 	try {

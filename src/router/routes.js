@@ -12,7 +12,7 @@ const routes = [
 	{
 		Component: Show,
 		key: 'Show',
-		path: '/:id'
+		path: '/show/:id'
 	},
 	{
 		Component: App,

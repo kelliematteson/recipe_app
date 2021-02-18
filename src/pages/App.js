@@ -44,6 +44,8 @@ export default function App(props) {
 			});
 		} catch (error) {
 			console.error(error);
+		} finally {
+			window.location.assign('/list');
 		}
 	};
 

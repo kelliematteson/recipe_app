@@ -12,7 +12,7 @@ const AppRouter = props => {
 					<Route
 						key={key}
 						path={path}
-						component={props => <Component page={key} otherProps={props} />}
+						component={props => <Component page={key} {...props} />}
 					></Route>
 				))}
 			</Switch>

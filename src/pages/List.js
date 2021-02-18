@@ -15,29 +15,16 @@ export default function List(props) {
 			}
 		})();
 	}, []);
-	// const handleDelete = async e => {
-	// 	try {
-	// 		const response = await fetch(`/api/myrecipes/${props.match.params.id}`, {
-	// 			method: 'DELETE',
-	// 			headers: {
-	// 				'Content-Type': 'application/json'
-	// 			}
-	// 		});
-	// 		const data = await response.json();
-	// 		setDidDelete(!didDelete);
-	// 	} catch (error) {
-	// 		console.error(error);
-	// 	} finally {
-	// 		window.location.assign('/list');
-	// 	}
-	// };
-	// console.log(myRecipes);
+
 	return (
 		<div className="myRecipes">
 			{tryRecipe.map(item => {
 				return (
 					<>
 						<p key={item._id}>Recipe:{item.name}</p>
+						<Link to={`/show/${item._id}`}>
+							<button>See the show page</button>
+						</Link>
 					</>
 				);
 			})}
