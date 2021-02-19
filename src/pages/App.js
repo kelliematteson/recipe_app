@@ -15,6 +15,7 @@ export default function App(props) {
 					const response = await fetch(query.searchURL);
 					const data = await response.json();
 					updateRecipe([...data.meals]);
+					console.log(data);
 				} catch (e) {
 					console.error(e);
 				}
@@ -32,7 +33,10 @@ export default function App(props) {
 	};
 	const handleClick = async addRecipe => {
 		const body = JSON.stringify({
-			name: addRecipe['item'].strMeal
+			name: addRecipe['item'].strMeal,
+			instructions: addRecipe['item'].strInstructions,
+			image: addRecipe['item'].strMealThumb,
+			category: addRecipe['item'].strCategory
 		});
 		try {
 			const response = await fetch('/api/myrecipes', {
@@ -48,33 +52,37 @@ export default function App(props) {
 			window.location.assign('/list');
 		}
 	};
-
 	return (
-		<div className="Page-wrapper">
-			<h2>Get a Recipe</h2>
-
-			<form onSubmit={handleSubmit}>
-				<label htmlFor="food"> Title</label>
-				<input
-					id="food"
-					type="text"
-					value={query.food}
-					onChange={handleChange}
-				/>
-				<input type="submit" value="Find a Recipe" />
-			</form>
-			<div className={'Page'}>
-				{recipe.map(item => {
-					return (
-						<div key={item.idMeal}>
-							<RecipeMap recipe={item} />
-							<button onClick={() => handleClick({ item })}>
-								Add to My List
-							</button>
-						</div>
-					);
-				})}
+		<body>
+			<div className="Page">
+				<div className="form">
+					<h1>What's for Dinner?!!</h1>
+					<h4>That App that helps you figure it out</h4>
+					<form onSubmit={handleSubmit}>
+						<label htmlFor="food"></label>
+						<input
+							id="food"
+							placeholder="Ingredients, dish, keyword "
+							type="text"
+							value={query.food}
+							onChange={handleChange}
+						/>
+						<input type="submit" value="Find a Recipe" />
+					</form>
+				</div>
+				<div className="data">
+					{recipe.map(item => {
+						return (
+							<div key={item.idMeal} className="item">
+								<RecipeMap recipe={item} />
+								<button onClick={() => handleClick({ item })}>
+									Add to My List
+								</button>
+							</div>
+						);
+					})}
+				</div>
 			</div>
-		</div>
+		</body>
 	);
 }

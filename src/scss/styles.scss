@@ -1,18 +1,109 @@
 @import url("https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700");
 @import "reset";
 @import "grid";
+@import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Quicksand&display=swap');
+$green: #33cc99;
+$gold: #ffcc33;
+$orange: #ff6633;
+$blue: #006699;
 
-body {
+h1 {
+  font-family: 'Anton';
+  color: $blue;
+  
+}
+.Page {
+  background-color: $green;
   font-size: 16px;
+  text-align: center;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  .form  {
+    color: ghostwhite;
+    font-family: "Quicksand";
+    padding-bottom: 10px;
+    margin: auto;
+  }
+  
+  .data {
+    // border: 2px solid black;
+    background-color: $green;
+    display: flex;
+    flex-wrap: wrap;
+    h3 {
+      color: $blue;
+    }
+    .item {
+      width: 30%;
+      display: flex;
+      // border: 2px solid white;
+      padding-top: 30px;
+        box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+        max-width: 400px;
+        margin: auto;
+        text-align: center;
+        font-family: arial;
+        button {
+          border: 3px solid $gold;
+          box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+          border-radius: 35px;
+          height: 100px;
+          width: 300px;
+          color: ghostwhite;
+          background-color: $orange;
+        }
+    }
+    
+  }
+  .myRecipes {
+    border: 2px solid black;
+    background-color: $green;
+  }
+  .ShowPage {
+    border: 2px solid black;
+    h2 {
+      color: $orange;
+      .show-cards {
+        border: 3px solid yellow;
+        
+      }
+    }
+    .updateForm {
+      background-color: $green;
+    }
+    .showpage-button {
+      background-color: $blue;
+    }
+  }
 }
 
 .NavBar {
   display: flex;
   justify-content: space-around;
   width: 100%;
-  background-color: #f0f0f0;
+  color: black;
+  background-color: $green;
+    a {
+    color: black;
+  }
 }
 
 img {
-  width: 25%;
+  width: 50%;
+  height: auto;
+  .list-images {
+    border: 2px solid white;
+  }
+}
+button {
+  border: 3px solid $orange;
+  border-radius: 25px;
+  height: 100px;
+  width: 300px;
+  color: white;
+  background-color: $orange;
+  
 }

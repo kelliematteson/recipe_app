@@ -17,17 +17,21 @@ export default function List(props) {
 	}, []);
 
 	return (
-		<div className="myRecipes">
-			{tryRecipe.map(item => {
-				return (
-					<>
-						<p key={item._id}>Recipe:{item.name}</p>
-						<Link to={`/show/${item._id}`} {...props}>
-							<button>See the show page</button>
-						</Link>
-					</>
-				);
-			})}
+		<div className="Page">
+			<div className="myRecipes">
+				{tryRecipe.map(item => {
+					return (
+						<>
+							<p key={item._id}>Recipe:{item.name}</p>
+							<h4>{item.category}</h4>
+							<img className="list-images" src={item.image} />
+							<Link to={`/show/${item._id}`}>
+								<button>See the show page</button>
+							</Link>
+						</>
+					);
+				})}
+			</div>
 		</div>
 	);
 }
