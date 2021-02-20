@@ -4,7 +4,7 @@ const recipeSchema = new Schema ({
     name: String,
     instructions: String,
     image: String,
-    category: String,
+    notes: String
 })
 
 module.exports = model('RecipeName', recipeSchema);

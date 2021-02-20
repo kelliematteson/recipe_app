@@ -36,7 +36,7 @@ export default function App(props) {
 			name: addRecipe['item'].strMeal,
 			instructions: addRecipe['item'].strInstructions,
 			image: addRecipe['item'].strMealThumb,
-			category: addRecipe['item'].strCategory
+			notes: ''
 		});
 		try {
 			const response = await fetch('/api/myrecipes', {
