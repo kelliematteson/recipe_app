@@ -62,7 +62,7 @@ export default function App(props) {
 						<label htmlFor="food"></label>
 						<input
 							id="food"
-							placeholder="Ingredients, dish, keyword "
+							placeholder="Main Ingredient "
 							type="text"
 							value={query.food}
 							onChange={handleChange}
