@@ -57,7 +57,7 @@ export default function App(props) {
 			<div className="Page">
 				<div className="form">
 					<h1>What's for Dinner?!!</h1>
-					<h4>That App that helps you figure it out</h4>
+					<h4>The App that helps you figure it out</h4>
 					<form onSubmit={handleSubmit}>
 						<label htmlFor="food"></label>
 						<input
